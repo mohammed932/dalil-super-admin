@@ -1,0 +1,50 @@
+<div class="dialog">
+  <div class="dialog__header">
+    <div class="title">
+      <h4>{{ "Add new Promotion" | translate }}</h4>
+    </div>
+  </div>
+  <form [formGroup]="addNewPromotion" (ngSubmit)="saveNewPromotion()">
+    <div class="form-group">
+      <select class="form-control" (change)="getSelectedType($event)">
+        <option value="fixed"> fixed</option>
+        <option value="percentage"> percentage</option>
+      </select>
+      <!-- <label for="name">{{ "type" | translate }}</label>
+        <input
+          type="number"
+          class="form-control"
+          formControlName="fixed"
+          (keyup)="checkFixed($event)"
+          [placeholder]="'fixed' | translate"
+        /> -->
+    </div>
+
+    <div class="form-group">
+      <label for="name">{{ "value" | translate }}</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="value"
+        id="value"
+        [placeholder]="'value' | translate"
+      />
+    </div>
+    <div class="form-group">
+      <label for="name">{{ "limit" | translate }}</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="limit"
+        id="limit"
+        [placeholder]="'limit' | translate"
+      />
+    </div>
+    <app-savebutton
+      [loading]="loading"
+      name="{{ 'save' | translate }}"
+    ></app-savebutton>
+  </form>
+</div>
+
+<!-- <button (click)="saveNewArea()" class="btn">{{ 'save' | translate}}</button> -->

@@ -1,0 +1,38 @@
+.mat-form-field {
+  width: 100%;
+}
+
+.card {
+  padding-bottom: 40px;
+}
+
+.selectProductsContainer {
+  width: 70%;
+  margin: auto;
+}
+
+@import "../../../assets/scss/now-ui-dashboard/variables";
+
+.image__container {
+  margin: 30px 0px;
+}
+
+input[type="file"] {
+  visibility: hidden;
+}
+
+.before__upload__container {
+  width: 124px;
+  height: 124px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: auto;
+}
+
+
+a {
+  color: #fff !important;
+  text-decoration: none;
+}

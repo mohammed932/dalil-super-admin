@@ -1,0 +1,81 @@
+@import "../../../../assets/scss/now-ui-dashboard/variables";
+
+ul {
+  list-style: none;
+}
+
+li {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+:host {
+  .optionContainer {
+    margin: 20px auto;
+  }
+
+  .reset-btn {
+    background: #20213d;
+    padding: 0px 30px;
+    color: #FFFFFF;
+    cursor: pointer;
+  }
+}
+
+
+label {
+  cursor: pointer;
+}
+
+.offerDetailsContainer {
+  margin: 30px auto;
+  width: 100%;
+  display: flex;
+
+}
+
+
+.image__container {
+  margin: 30px 0px;
+}
+
+input[type="file"] {
+  visibility: hidden;
+}
+
+.before__upload__container {
+  width: 124px;
+  height: 124px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  margin: auto;
+}
+
+.countContainer {
+  margin: 20px auto;
+}
+
+@media screen and (max-width: 766px) {
+  .formContainer {
+    .form-item {
+      margin: 15px auto;
+    }
+  }
+}
+
+@media screen and (min-width: 767px) {
+  .formContainer {
+    display: flex;
+    flex-direction: column;
+
+    .form-item {
+      margin: 15px auto;
+    }
+  }
+}
+
+.checked {
+  background: red;
+}

@@ -1,0 +1,68 @@
+@import "../../../assets/scss/now-ui-dashboard/variables";
+
+
+mat-cell {
+  .order_status {
+    padding: 5px 15px;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: 600;
+  }
+}
+
+.filterStatus__container {
+  margin: 20px auto;
+  width: 100%;
+
+  .filter__group {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+mat-radio-group {
+  mat-radio-button {
+    color: $primary-color;
+    margin: auto 10px;
+    text-transform: capitalize;
+  }
+}
+
+.clearSelection {
+  a {
+    background: $secondary-color;
+    padding: 10px 30px;
+    color: $white-color;
+    cursor: pointer;
+  }
+}
+
+::ng-deep {
+  .mat-expansion-panel-header-title {
+    font-weight: 550px;
+    color: $secondary-color;
+  }
+
+  .mat-radio-button.mat-accent .mat-radio-inner-circle {
+    background-color: $red-color !important;
+  }
+
+  .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+    border-color: $secondary-color;
+  }
+}
+
+
+@media screen and (max-width: 676px) {
+  mat-radio-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    mat-radio-button {
+      color: $primary-color;
+      margin: auto auto !important;
+
+    }
+  }
+}

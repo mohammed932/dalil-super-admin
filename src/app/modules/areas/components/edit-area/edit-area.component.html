@@ -1,0 +1,39 @@
+<div class="dialog">
+  <div class="dialog__header">
+    <div class="title">
+      <h4>تعديل المدينة</h4>
+    </div>
+  </div>
+  <form [formGroup]="editCityForm" (ngSubmit)="updateArea()">
+    <div class="form-group">
+      <label for="name">الإسم بالانجليزى</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="name"
+        id="name"
+        placeholder="Name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="arabic_name">الإسم بالعربى</label>
+      <input
+        type="text"
+        class="form-control"
+        id="arabic_name"
+        formControlName="name_ar"
+        placeholder="الإسم بالعربى"
+      />
+    </div>
+    <app-savebutton
+      [loading]="loading"
+      name="{{ 'حفظ' | translate }}"
+    ></app-savebutton>
+
+    <app-savebutton
+      name="حفظ"
+      [isDisabled]="isDisabled"
+      [loading]="loading"
+    ></app-savebutton>
+  </form>
+</div>

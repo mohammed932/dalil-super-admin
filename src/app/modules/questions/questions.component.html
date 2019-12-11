@@ -1,0 +1,50 @@
+<section class="panel-header panel-header-sm"></section>
+
+<section class="main-content container">
+  <section class="row">
+    <section class="card col-md-12">
+      <section class="card-header">
+        <section class="card-title-container">
+          <h4 class="card-title">{{ "الاسئلة" | translate }}</h4>
+        </section>
+        <section class="card-action">
+          <app-add-button
+            isDisabled="no"
+            name="{{ '+' | translate }}"
+            (isClicked)="addNewQuestion()"
+          >
+          </app-add-button>
+        </section>
+      </section>
+
+      <section class="card-body">
+        <article
+          class="questionContainer"
+          *ngFor="let question of questions; let i = index"
+        >
+          <h4 class="questionContainer__question">{{ question.question }}</h4>
+          <p class="questionContainer__answer">{{ question.answer }}</p>
+          <h4 class="questionContainer__question">
+            {{ question.translation.ar.question }}
+          </h4>
+          <p class="questionContainer__answer">
+            {{ question.translation.ar.answer }}
+          </p>
+          <button
+            class="btn btn-danger"
+            (click)="deleteQuestion(question._id, i)"
+          >
+            حذف
+          </button>
+
+          <button
+            class="btn btn-primary"
+            (click)="updateQuestion(question._id, question)"
+          >
+            تعديل
+          </button>
+        </article>
+      </section>
+    </section>
+  </section>
+</section>

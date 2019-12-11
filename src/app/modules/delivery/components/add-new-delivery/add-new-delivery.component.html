@@ -1,0 +1,30 @@
+<div class="dialog">
+  <div class="dialog__header">
+    <div class="title">
+      <h4>{{ "Add new delivery" | translate }}</h4>
+    </div>
+  </div>
+  <form [formGroup]="addNewPromotion" (ngSubmit)="createNewDelivery()">
+    <div class="form-group">
+      <input
+        type="number"
+        class="form-control"
+        formControlName="start"
+        (keyup)="checkFixed($event)"
+        [placeholder]="'start' | translate"
+      />
+    </div>
+
+    <div class="form-group">
+      <input
+        type="number"
+        class="form-control"
+        formControlName="end"
+        [placeholder]="'End' | translate"
+      />
+    </div>
+    <app-savebutton [loading]="loading" name="حفظ"></app-savebutton>
+  </form>
+</div>
+
+<!-- <button (click)="saveNewArea()" class="btn">{{ 'save' | translate}}</button> -->

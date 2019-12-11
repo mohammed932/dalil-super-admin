@@ -1,0 +1,45 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "../../../../assets/scss/now-ui-dashboard/variables";
+
+@font-face {
+  font-family: JF_FLAT;
+  src: url(/assets/fonts/JF_FLAT_REGULAR.otf) format("truetype"),
+    url(/assets/fonts/JF_FLAT_REGULAR.otf) format("truetype");
+}
+
+body {
+  font-family: "Cairo", sans-serif !important;
+
+  [dir="rtl"] & {
+    font-family: "Cairo", sans-serif !important;
+  }
+}
+::host {
+  .mat-dialog-container {
+    overflow: auto;
+  }
+}
+
+:host {
+  .mat-paginator-container {
+    [dir="rtl"] & {
+      justify-content: flex-start;
+    }
+  }
+}
+
+::ng-deep {
+  .mat-icon-button {
+    .mat-button-wrapper > * {
+      color: red;
+    }
+  }
+}
+
+@media screen and (max-width: 676px) {
+  .cdk-overlay-pane {
+    max-width: 95% !important;
+    width: 95% !important;
+  }
+}

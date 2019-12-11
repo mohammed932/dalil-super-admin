@@ -1,0 +1,35 @@
+@import '../../../assets/scss/now-ui-dashboard/variables';
+
+:host {
+  .main-content {
+    .card {
+      .card-header {
+        display: flex;
+        .card-action {
+          margin-left: auto;
+          [dir=rtl] & {
+            margin-right: auto;
+            margin-left: initial;
+          }
+
+        }
+      }
+
+      .card-body {
+        .questionContainer {
+          width: 80%;
+          border: 1px solid #ccc;
+          margin: 20px auto;
+          padding: 10px;
+          border-radius: 10px;
+          &__question {
+            color: $primary-color;
+            font-weight: 650;
+          }
+        }
+      }
+    }
+  }
+
+
+}

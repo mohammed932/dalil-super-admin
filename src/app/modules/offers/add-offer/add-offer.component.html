@@ -1,0 +1,195 @@
+<div class="panel-header panel-header-sm"></div>
+
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card card-user">
+        <div class="card-header">
+          <div class="card-title-container">
+            <h4 class="card-title">{{ "Add Offer" | translate }}</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <ng-container *ngIf="getProducts().length <= 1">
+            <div class="author" @boxAnimation>
+              <div class="image__container">
+                <input
+                  type="file"
+                  #filePicker
+                  (change)="onImagePicked($event)"
+                />
+              </div>
+              <div class="image-preview">
+                <ng-container>
+                  <a
+                    class="before__upload__container"
+                    (click)="filePicker.click()"
+                  >
+                    <img
+                      img-cache
+                      img-cache-src="{{ imagePreview }}"
+                      class="avatar border-gray"
+                    />
+                  </a>
+                </ng-container>
+                <h6>
+                  Image max size is w 600px h 200px {{ height }} {{ width }}
+                </h6>
+              </div>
+            </div>
+          </ng-container>
+          <form [formGroup]="offerForm">
+            <div formArrayName="products">
+              <div *ngFor="let product of getProducts(); let i = index">
+                <div formGroupName="{{ i }}" class="optionContainer">
+                  <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                      <mat-panel-title>
+                        <h6>{{ product.value.name }}</h6>
+                      </mat-panel-title>
+                      <mat-panel-description> </mat-panel-description>
+                    </mat-expansion-panel-header>
+
+                    <div formArrayName="options">
+                      <div
+                        *ngFor="
+                          let option of product.get('options')['controls'];
+                          let j = index
+                        "
+                        formGroupName="{{ j }}"
+                        @boxAnimation
+                      >
+                        {{ option.value.question }}
+                        <div formArrayName="choices">
+                          <ul>
+                            <li
+                              *ngFor="
+                                let choice of option.get('choices')['controls'];
+                                let x = index
+                              "
+                              formGroupName="{{ x }}"
+                            >
+                              <mat-radio-group
+                                [name]="
+                                  getRadioButtonGroupName(i, j, option, x)
+                                "
+                                [disabled]="choice.disabled"
+                                (change)="
+                                  setNextOption(
+                                    i,
+                                    j,
+                                    choice.value.item._id,
+                                    choice,
+                                    option.get('choices')
+                                  )
+                                "
+                              >
+                                <mat-radio-button
+                                  class="example-margin"
+                                  type="radio"
+                                  [value]="choice.value.item._id"
+                                >
+                                  {{ choice.value.item.name }}
+                                </mat-radio-button>
+                              </mat-radio-group>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="countContainer">
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Product Count"
+                        (keyup)="getCountOfProducts($event, i)"
+                      />
+                    </div>
+                    <button
+                      mat-button
+                      class="reset-btn"
+                      (click)="resetOptions(i)"
+                    >
+                      Reset
+                    </button>
+                  </mat-expansion-panel>
+                </div>
+              </div>
+            </div>
+          </form>
+
+          <div class="offerDetailsContainer">
+            <form [formGroup]="offerDetailForm">
+              <div class="formContainer">
+                <div class="form-item">
+                  <input
+                    class="form-control"
+                    placeholder="Discount Percentage"
+                    (change)="caluDiscount($event)"
+                    formControlName="discount_percentage"
+                  />
+                </div>
+                <div class="form-item">
+                  <input
+                    class="form-control"
+                    placeholder="Total Price"
+                    formControlName="total_price"
+                  />
+                </div>
+
+                <div class="form-item">
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      disabled
+                      formControlName="from"
+                      [min]="minDate"
+                      [max]="maxDate"
+                      [matDatepicker]="picker"
+                      placeholder="Offer Start Date"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="picker"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker
+                      touchUi
+                      #picker
+                      disabled="false"
+                    ></mat-datepicker>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width">
+                    <input
+                      matInput
+                      disabled
+                      formControlName="to"
+                      [min]="minDate"
+                      [max]="maxDate"
+                      [matDatepicker]="picker2"
+                      placeholder="Offer End Date"
+                    />
+                    <mat-datepicker-toggle
+                      matSuffix
+                      [for]="picker2"
+                    ></mat-datepicker-toggle>
+                    <mat-datepicker
+                      touchUi
+                      #picker2
+                      disabled="false"
+                    ></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <app-open-dialog-button
+            (isClicked)="submit()"
+            name="{{ 'Submit' | translate }}"
+          ></app-open-dialog-button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

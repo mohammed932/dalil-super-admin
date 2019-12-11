@@ -1,0 +1,343 @@
+<div class="panel-header panel-header-sm"></div>
+
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title-container">
+            <h4 class="card-title">{{ "Order Details" | translate }}</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <ng-template [ngIf]="!order?.is_old">
+            <article class="row">
+              <section class="col-md-12">
+                <article class="basic__info">
+                  <header>
+                    <h4 class="basic__info__title">Basic Info</h4>
+                  </header>
+                  <article class="basic__info__itemsContainer">
+                    <section>
+                      <h6 class="basic__info__subtitle">
+                        Order Number
+                      </h6>
+                      <p>{{ order.order_number }}</p>
+                    </section>
+
+                    <section>
+                      <h6 class="basic__info__subtitle">
+                        Status
+                      </h6>
+                      <p>{{ order.status[0].text }}</p>
+                    </section>
+
+                    <section>
+                      <h6 class="basic__info__subtitle">
+                        Payment Type
+                      </h6>
+                      <p>{{ order.payment_type }}</p>
+                    </section>
+
+                    <section>
+                      <h6 class="basic__info__subtitle">
+                        Date
+                      </h6>
+                      <p>{{ order.date | date }}</p>
+                    </section>
+                    <section>
+                      <h6 class="basic__info__subtitle">
+                        Address
+                      </h6>
+                      <p>{{ order.address.address }}</p>
+                    </section>
+                  </article>
+                </article>
+
+                <article class="basic__info">
+                  <header>
+                    <h4 class="basic__info__title">User Info</h4>
+                  </header>
+                  <article class="basic__info__itemsContainer">
+                    <section>
+                      <h6 class="basic__info__subtitle">
+                        name
+                      </h6>
+                      <p>{{ order.user.name }}</p>
+                    </section>
+
+                    <section>
+                      <h6 class="basic__info__subtitle">
+                        mobile
+                      </h6>
+                      <p>{{ order.user.mobile }}</p>
+                    </section>
+                  </article>
+                </article>
+              </section>
+              <section class="col-md-12">
+                <article class="basic__info">
+                  <header>
+                    <h4 class="basic__info__title">Price</h4>
+                  </header>
+                  <article class="basic__info__itemsContainer">
+                    <section>
+                      <h6 class="basic__info__subtitle">
+                        Delivery Cost
+                      </h6>
+                      <p>{{ order.order_price_info.delivery_cost }}</p>
+                    </section>
+
+                    <section>
+                      <h6 class="basic__info__subtitle">
+                        final price
+                      </h6>
+                      <p>{{ order.order_price_info.final_price }}</p>
+                    </section>
+
+                    <section>
+                      <h6 class="basic__info__subtitle">
+                        total order price
+                      </h6>
+                      <p>{{ order.order_price_info.total_order_price }}</p>
+                    </section>
+                  </article>
+                </article>
+
+                <article class="basic__info">
+                  <header>
+                    <h4 class="basic__info__title">Delivery</h4>
+                  </header>
+                  <article class="basic__info__itemsContainer">
+                    <section>
+                      <h6 class="basic__info__subtitle">
+                        Start time
+                      </h6>
+                      <p>{{ order.delivery.start }}</p>
+                    </section>
+
+                    <section>
+                      <h6 class="basic__info__subtitle">
+                        end time
+                      </h6>
+                      <p>{{ order.delivery.end }}</p>
+                    </section>
+                  </article>
+                </article>
+
+                <!--Start Voucher Section-->
+                <ng-container *ngIf="order?.voucher_numbers.length > 0">
+                  <article class="basic__info">
+                    <header>
+                      <section>
+                        <h4 class="basic__info__title">Voucher Numbers</h4>
+                      </section>
+                      <ng-container *ngIf="order.status[0].text === 'paid'">
+                        <section class="voucher_actions">
+                          <button
+                            class="btn accept_btn"
+                            (click)="sendVoucherStatus('confirmed')"
+                          >
+                            Accept
+                          </button>
+                          <button
+                            class="btn reject_btn"
+                            (click)="sendVoucherStatus('rejected')"
+                          >
+                            Reject
+                          </button>
+                        </section>
+                      </ng-container>
+                    </header>
+                    <article class="basic__info__itemsContainer">
+                      <section>
+                        <h6 class="basic__info__subtitle">
+                          Voucher Numbers
+                        </h6>
+                        <ul>
+                          <li *ngFor="let voucher of order?.voucher_numbers">
+                            {{ voucher }}
+                          </li>
+                        </ul>
+                      </section>
+                    </article>
+                  </article>
+                </ng-container>
+                <!--End Voucher Section-->
+              </section>
+              <section class="col-md-12">
+                <article class="basic__info">
+                  <header>
+                    <h4>Client Location</h4>
+                  </header>
+                  <section>
+                    <agm-map
+                      [latitude]="center.lat"
+                      [longitude]="center.lng"
+                      [zoom]="5"
+                      [fullscreenControl]="true"
+                    >
+                      <agm-marker
+                        [latitude]="order.address.location.coordinates[1]"
+                        [longitude]="order.address.location.coordinates[0]"
+                      >
+                      </agm-marker>
+                    </agm-map>
+                  </section>
+                </article>
+              </section>
+              <!--Start Product section-->
+              <section class="col-md-12">
+                <article class="basic_info">
+                  <header>
+                    <h4 class="basic__info__title">Products</h4>
+                  </header>
+                  <article class="product__wrapper row">
+                    <section
+                      [ngClass]="
+                        order.products.length > 1 ? 'col-md-6' : 'col-md-10'
+                      "
+                      *ngFor="let product of order.products"
+                    >
+                      <section class="product">
+                        <section class="product_img">
+                          <img
+                            [src]="product.product.image"
+                            [alt]="product.product.name"
+                          />
+                        </section>
+                        <section class="product_info">
+                          <h5>{{ product.product.name }}</h5>
+
+                          <section
+                            class="list"
+                            *ngFor="let option of product.options"
+                          >
+                            <h6>
+                              {{ option.category.name }}:
+                              <span *ngFor="let choice of option.choices">
+                                {{ choice.item.name }} -
+                              </span>
+                            </h6>
+                          </section>
+                        </section>
+
+                        <section class="product_cashDetail">
+                          <section class="price">
+                            <strong>Price</strong>
+                            {{ product.price_info.total_price }}
+                          </section>
+                          <section class="qty">
+                            <strong>Qty</strong>: {{ product.price_info.count }}
+                          </section>
+                        </section>
+                      </section>
+                    </section>
+                  </article>
+                </article>
+              </section>
+              <!--End Product section-->
+            </article>
+          </ng-template>
+          <!-------------------------->
+          <!-------------------------->
+          <!-------------------------->
+          <!-------------------------->
+          <!--Start Old Order View-->
+          <!-------------------------->
+          <!-------------------------->
+          <!-------------------------->
+          <!-------------------------->
+          <ng-template [ngIf]="order?.is_old">
+            <section class="col-md-12">
+              <article class="basic__info">
+                <header>
+                  <h4 class="basic__info__title">Basic Info</h4>
+                </header>
+                <article class="basic__info__itemsContainer">
+                  <section>
+                    <h6 class="basic__info__subtitle">
+                      Order Number
+                    </h6>
+                    <p>{{ order.order_number }}</p>
+                  </section>
+
+                  <section>
+                    <h6 class="basic__info__subtitle">
+                      Status
+                    </h6>
+                    <p>{{ order.status[0].text }}</p>
+                  </section>
+                </article>
+              </article>
+
+              <!--Old Delivery Info -->
+
+              <article class="basic__info">
+                <header>
+                  <h4 class="basic__info__title">Price</h4>
+                </header>
+                <article class="basic__info__itemsContainer">
+                  <section>
+                    <h6 class="basic__info__subtitle">
+                      Delivery Cost
+                    </h6>
+                    <p>{{ order.order_price_info.delivery_cost }}</p>
+                  </section>
+
+                  <section>
+                    <h6 class="basic__info__subtitle">
+                      final price
+                    </h6>
+                    <p>{{ order.order_price_info.final_price }}</p>
+                  </section>
+
+                  <section>
+                    <h6 class="basic__info__subtitle">
+                      total order price
+                    </h6>
+                    <p>{{ order.order_price_info.total_order_price }}</p>
+                  </section>
+                </article>
+              </article>
+
+              <!--Start Products -->
+
+              <article class="basic_info">
+                <header>
+                  <h4 class="basic__info__title">Products</h4>
+                </header>
+                <article class="product__wrapper row">
+                  <section
+                    [ngClass]="
+                      order.products.length > 1 ? 'col-md-6' : 'col-md-10'
+                    "
+                    *ngFor="let product of order.products"
+                  >
+                    <section class="product">
+                      <section class="product_info">
+                        <h5>{{ product.product.name }}</h5>
+                      </section>
+
+                      <section class="product_cashDetail">
+                        <section class="price">
+                          <strong>Price</strong>
+                          {{ product.price_info.total_price }}
+                        </section>
+                        <section class="qty">
+                          <strong>Qty</strong>:
+                          {{ product.price_info.count }}
+                        </section>
+                      </section>
+                    </section>
+                  </section>
+                </article>
+              </article>
+              <!--End Products-->
+            </section>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

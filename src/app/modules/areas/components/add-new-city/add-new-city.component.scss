@@ -1,0 +1,15 @@
+@import "../../../../../assets/scss/now-ui-dashboard/variables";
+
+agm-map {
+  height: 280px;
+}
+.dialog {
+  .dialog__header {
+    .title {
+      h4 {
+        font-weight: 700;
+        color: $primary-color;
+      }
+    }
+  }
+}

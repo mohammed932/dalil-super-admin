@@ -1,0 +1,27 @@
+<div class="dialog">
+  <div class="dialog__header">
+    <div class="title">
+      <h4>{{ "Update Order" | translate }}</h4>
+    </div>
+  </div>
+  <form>
+    <div class="form-group">
+      <select class="form-control" (change)="setOrderStatus($event)">
+        <option value="received"> received</option>
+        <option value="canceled"> canceled</option>
+        <option value="on_delivery"> on delivery</option>
+        <option value="paid"> paid</option>
+        <option value="rejected"> rejected</option>
+        <option value="confirmed"> confirmed</option>
+        <option value="completed"> completed</option>
+      </select>
+    </div>
+
+    <app-open-dialog-button
+      isDisabled="no"
+      name="{{ 'Save' | translate }}"
+      (isClicked)="updateNewPromotion()"
+    >
+    </app-open-dialog-button>
+  </form>
+</div>

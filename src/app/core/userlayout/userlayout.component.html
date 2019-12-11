@@ -1,0 +1,117 @@
+<mat-toolbar>
+  <button class="hamburger mat-button" (click)="toggle()" mat-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <div ngbDropdown class="manage_account">
+    <a id="dropdownBasic1" ngbDropdownToggle>
+      إدارة الحساب
+    </a>
+    <div
+      class="dropdown-menu dropdown-menu-right"
+      ngbDropdownMenu
+      aria-labelledby="dropdownBasic1"
+    >
+      <a class="dropdown-item" (click)="Logout()">Logout</a>
+    </div>
+  </div>
+
+  <div class="header-logo">
+    <img src="./assets/img/logo.png" />
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container>
+  <mat-sidenav #sidenav [mode]="sidebarStatus" opened="true" position="start">
+    <div class="logo">
+      <a [routerLink]="['/']" class="simple-text logo-mini">
+        <div class="logo-img">
+          <img src="./assets/img/logo.png" />
+        </div>
+      </a>
+    </div>
+    <ul>
+      <ng-container>
+        <li>
+          <mat-nav-list [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/'] | localize" [routerLinkActive]="['is-active']">
+            <mat-list-item >المدن</mat-list-item>
+          </mat-nav-list>
+        </li>
+        <li>
+          <mat-nav-list [routerLink]="['/options'] | localize" [routerLinkActive]="['is-active']">
+            <mat-list-item 
+              >الخيارات</mat-list-item
+            >
+          </mat-nav-list>
+        </li>
+        <li>
+          <mat-nav-list [routerLink]="['/categories'] | localize" [routerLinkActive]="['is-active']">
+            <mat-list-item 
+              >التصنيفات</mat-list-item
+            >
+          </mat-nav-list>
+        </li>
+        <!-- <li>
+          <mat-nav-list>
+            <mat-list-item [routerLink]="['/activities'] | localize" [routerLinkActive]="['is-active']"
+              >الانشطة</mat-list-item
+            >
+          </mat-nav-list>
+        </li> -->
+        <li>
+          <mat-nav-list [routerLink]="['/occations'] | localize" [routerLinkActive]="['is-active']"> 
+            <mat-list-item 
+              >المناسبات</mat-list-item
+            >
+          </mat-nav-list>
+        </li>
+        <li>
+          <mat-nav-list  [routerLink]="['/questions'] | localize" [routerLinkActive]="['is-active']">
+            <mat-list-item
+              >الاسئلة</mat-list-item
+            >
+          </mat-nav-list>
+        </li>
+        <li>
+          <mat-nav-list [routerLink]="['/settings'] | localize" [routerLinkActive]="['is-active']">
+            <mat-list-item 
+              >الاعدادات</mat-list-item
+            >
+          </mat-nav-list>
+        </li>
+        <li >
+          <mat-nav-list [routerLink]="['/activities'] | localize" [routerLinkActive]="['is-active']">
+            <mat-list-item >
+               الانشطه</mat-list-item
+            >
+          </mat-nav-list>
+        </li>
+        <li >
+          <mat-nav-list [routerLink]="['/activities-owners'] | localize" [routerLinkActive]="['is-active']">
+            <mat-list-item >
+              أصحاب الانشطه</mat-list-item
+            >
+          </mat-nav-list>
+        </li>
+        <li>
+          <mat-nav-list [routerLink]="['/admins'] | localize" [routerLinkActive]="['is-active']">
+            <mat-list-item >
+              المديرين</mat-list-item
+            >
+          </mat-nav-list>
+        </li>
+        <!-- <li>
+          <mat-nav-list>
+            <mat-list-item [routerLink]="['/configurations'] | localize" [routerLinkActive]="['is-active']"
+              >أضف نشاط</mat-list-item
+            >
+          </mat-nav-list>
+        </li> -->
+      </ng-container>
+    </ul>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="sidenav-content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

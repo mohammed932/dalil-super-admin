@@ -1,0 +1,53 @@
+<div class="dialog">
+  <div class="dialog__header">
+    <div class="title">
+      <h4>{{ "تعديل سؤال " | translate }}</h4>
+    </div>
+  </div>
+  <form [formGroup]="updateQuestionsForm" (ngSubmit)="updateQuestionsss()">
+    <div class="form-group">
+      <label for="name">{{ "السؤال بالانجليزى" | translate }}</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="question"
+        [placeholder]="'السؤال بالانجليزى' | translate"
+      />
+    </div>
+    <div class="form-group">
+      <label for="name">{{ "الاجابه بالانجليزى" | translate }}</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="anwser"
+        [placeholder]="'السؤال بالانجليزى' | translate"
+      />
+    </div>
+    <div class="form-group">
+      <label for="name">{{ "السؤال بالعربى" | translate }}</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="question_ar"
+        [placeholder]="'السؤال بالعربى' | translate"
+      />
+    </div>
+    <div class="form-group">
+      <label for="name">{{ "الاجابه بالعربى" | translate }}</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="answer_ar"
+        [placeholder]="'الاجابه بالعربى' | translate"
+      />
+    </div>
+
+    <app-savebutton
+      name="حفظ"
+      [isDisabled]="isDisabled"
+      [loading]="loading"
+    ></app-savebutton>
+  </form>
+</div>
+
+<!-- <button (click)="saveNewArea()" class="btn">{{ 'save' | translate}}</button> -->

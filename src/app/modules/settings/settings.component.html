@@ -1,0 +1,123 @@
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title-container">
+            <h4 class="card-title">{{ "الاعدادات" | translate }}</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="settingForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label>عن دليل المناسبات بالعربى</label>
+              <textarea
+                formControlName="about_us_ar"
+                cols="30"
+                class="form-control"
+                rows="10"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>عن دليل المناسبات بالانجليزى</label>
+              <textarea
+                formControlName="about_us"
+                class="form-control"
+                cols="30"
+                rows="10"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label> سياسة الاستخدام لصاحب النشاط بالانجليزى</label>
+              <textarea
+                formControlName="rules_of_property_owners"
+                class="form-control"
+                cols="30"
+                rows="10"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label> سياسة الاستخدام لصاحب النشاط بالعربى</label>
+              <textarea
+                formControlName="rules_of_property_owners_ar"
+                class="form-control"
+                cols="30"
+                rows="10"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label> سياسة الاستخدام للزبون بالانجليزى</label>
+              <textarea
+                formControlName="rules_of_customers"
+                class="form-control"
+                cols="30"
+                rows="10"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label> سياسة الاستخدام للزبون بالعربى</label>
+              <textarea
+                formControlName="rules_of_customers_ar"
+                class="form-control"
+                cols="30"
+                rows="10"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>رقم الدعم </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="support_number"
+              />
+            </div>
+
+            
+            <div class="form-group">
+              <label> الفيس بوك </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="facebook"
+              />
+            </div>
+
+
+            
+            <div class="form-group">
+              <label> تويتر </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="twitter"
+              />
+            </div>
+
+            
+            <div class="form-group">
+              <label> الانستجرام </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="instagram"
+              />
+            </div>
+
+            <app-savebutton
+              [loading]="loading"
+              [isDisabled]="isDisabled"
+              name="{{ 'حفظ' | translate }}"
+            ></app-savebutton>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

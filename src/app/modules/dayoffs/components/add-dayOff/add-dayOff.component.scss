@@ -1,0 +1,55 @@
+@import "../../../../../assets/scss/now-ui-dashboard/variables";
+
+mat-form-field,
+textarea {
+  width: 100%;
+}
+
+mat-spinner {
+  margin: auto;
+}
+
+input[type="file"] {
+  visibility: hidden;
+}
+
+.before__upload__container {
+  border: 3px dashed $primary-color;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  .before__preview {
+    mat-icon {
+      font-size: 5rem;
+      color: $primary-color;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.image-preview {
+  height: 12rem;
+  margin: 1rem auto;
+  width: 50%;
+  text-align: center;
+  background: #f2f2f2;
+}
+
+.image-preview img {
+  height: 99.9%;
+  max-width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .image-preview {
+    width: 95%;
+  }
+  .submit__btn {
+    margin: 10px auto !important;
+  }
+}
