@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  base_url: 'https://shaleeh.herokuapp.com/',
+  base_url: "http://79.137.17.224:3000/",
   firebaseConfig: {
     apiKey: "AIzaSyDmcV9e6sNtWHsSAp5ucjp4-4Oy5p-dRB0",
     authDomain: "dalel-monsabat-superadmin.firebaseapp.com",
