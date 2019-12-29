@@ -1,0 +1,56 @@
+<div class="panel-header panel-header-sm"></div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title-container">
+            <h4 class="card-title">الاشعارات</h4>
+          </div>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="notificationForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+              <label> العنوان بالعربي </label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="title_ar"
+              />
+            </div>
+
+            <div class="form-group">
+              <label> العنوان بالانجليزي </label>
+              <input type="text" class="form-control" formControlName="title" />
+            </div>
+            <div class="form-group">
+              <label>الرسالة بالعربي</label>
+              <textarea
+                formControlName="message_ar"
+                cols="30"
+                class="form-control"
+                rows="10"
+              ></textarea>
+            </div>
+
+            <div class="form-group">
+              <label>الرسالة بالانجليزي</label>
+              <textarea
+                formControlName="message"
+                class="form-control"
+                cols="30"
+                rows="10"
+              ></textarea>
+            </div>
+
+            <app-savebutton
+              [loading]="loading"
+              [isDisabled]="isDisabled"
+              name="حفظ"
+            ></app-savebutton>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

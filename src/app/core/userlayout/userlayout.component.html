@@ -32,22 +32,28 @@
     <ul>
       <ng-container>
         <li>
-          <mat-nav-list [routerLinkActiveOptions]="{ exact: true }" [routerLink]="['/'] | localize" [routerLinkActive]="['is-active']">
-            <mat-list-item >المدن</mat-list-item>
+          <mat-nav-list
+            [routerLinkActiveOptions]="{ exact: true }"
+            [routerLink]="['/'] | localize"
+            [routerLinkActive]="['is-active']"
+          >
+            <mat-list-item>المدن</mat-list-item>
           </mat-nav-list>
         </li>
         <li>
-          <mat-nav-list [routerLink]="['/options'] | localize" [routerLinkActive]="['is-active']">
-            <mat-list-item 
-              >الخيارات</mat-list-item
-            >
+          <mat-nav-list
+            [routerLink]="['/options'] | localize"
+            [routerLinkActive]="['is-active']"
+          >
+            <mat-list-item>الخيارات</mat-list-item>
           </mat-nav-list>
         </li>
         <li>
-          <mat-nav-list [routerLink]="['/categories'] | localize" [routerLinkActive]="['is-active']">
-            <mat-list-item 
-              >التصنيفات</mat-list-item
-            >
+          <mat-nav-list
+            [routerLink]="['/categories'] | localize"
+            [routerLinkActive]="['is-active']"
+          >
+            <mat-list-item>التصنيفات</mat-list-item>
           </mat-nav-list>
         </li>
         <!-- <li>
@@ -58,45 +64,59 @@
           </mat-nav-list>
         </li> -->
         <li>
-          <mat-nav-list [routerLink]="['/occations'] | localize" [routerLinkActive]="['is-active']"> 
-            <mat-list-item 
-              >المناسبات</mat-list-item
-            >
+          <mat-nav-list
+            [routerLink]="['/occations'] | localize"
+            [routerLinkActive]="['is-active']"
+          >
+            <mat-list-item>المناسبات</mat-list-item>
           </mat-nav-list>
         </li>
         <li>
-          <mat-nav-list  [routerLink]="['/questions'] | localize" [routerLinkActive]="['is-active']">
-            <mat-list-item
-              >الاسئلة</mat-list-item
-            >
+          <mat-nav-list
+            [routerLink]="['/questions'] | localize"
+            [routerLinkActive]="['is-active']"
+          >
+            <mat-list-item>الاسئلة</mat-list-item>
           </mat-nav-list>
         </li>
         <li>
-          <mat-nav-list [routerLink]="['/settings'] | localize" [routerLinkActive]="['is-active']">
-            <mat-list-item 
-              >الاعدادات</mat-list-item
-            >
-          </mat-nav-list>
-        </li>
-        <li >
-          <mat-nav-list [routerLink]="['/activities'] | localize" [routerLinkActive]="['is-active']">
-            <mat-list-item >
-               الانشطه</mat-list-item
-            >
-          </mat-nav-list>
-        </li>
-        <li >
-          <mat-nav-list [routerLink]="['/activities-owners'] | localize" [routerLinkActive]="['is-active']">
-            <mat-list-item >
-              أصحاب الانشطه</mat-list-item
-            >
+          <mat-nav-list
+            [routerLink]="['/notifications'] | localize"
+            [routerLinkActive]="['is-active']"
+          >
+            <mat-list-item>الاشعارات</mat-list-item>
           </mat-nav-list>
         </li>
         <li>
-          <mat-nav-list [routerLink]="['/admins'] | localize" [routerLinkActive]="['is-active']">
-            <mat-list-item >
-              المديرين</mat-list-item
-            >
+          <mat-nav-list
+            [routerLink]="['/settings'] | localize"
+            [routerLinkActive]="['is-active']"
+          >
+            <mat-list-item>الاعدادات</mat-list-item>
+          </mat-nav-list>
+        </li>
+        <li>
+          <mat-nav-list
+            [routerLink]="['/activities'] | localize"
+            [routerLinkActive]="['is-active']"
+          >
+            <mat-list-item> الانشطه</mat-list-item>
+          </mat-nav-list>
+        </li>
+        <li>
+          <mat-nav-list
+            [routerLink]="['/activities-owners'] | localize"
+            [routerLinkActive]="['is-active']"
+          >
+            <mat-list-item> أصحاب الانشطه</mat-list-item>
+          </mat-nav-list>
+        </li>
+        <li>
+          <mat-nav-list
+            [routerLink]="['/admins'] | localize"
+            [routerLinkActive]="['is-active']"
+          >
+            <mat-list-item> المديرين</mat-list-item>
           </mat-nav-list>
         </li>
         <!-- <li>
