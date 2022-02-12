@@ -41,7 +41,7 @@
     "@ngx-translate/http-loader": "^4.0.0",
     "@swimlane/ngx-charts": "^11.1.0",
     "@types/moment": "^2.13.0",
-    "ajv": "6.7.0",
+    "ajv": "6.12.3",
     "ajv-keywords": "3.3.0",
     "bootstrap": "4.2.1",
     "chart.js": "2.7.3",
